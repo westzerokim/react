@@ -8,6 +8,7 @@
  
  <script>
    const root = document.getElementById("root");
+   const h2 = React.createElement("h3" ,{ id : "title", onNouseEnter: ()=> console.log("으악 쥐다!"),},"hello i'm a title3");
    const span = React.createElement("h1", {id:"hot-span", style:{ color: "pink"}, onMouseEnter: () => console.log("mouse enter")}, "hello I'm a span");
    // 괄호안에 적는 것은 내가 만들고자 하는 html태그와 이름이 같아야한다.
    const btn = React.createElement("button", {onClick: () => console.log('im clicked')}, "Click me");
