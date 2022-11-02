@@ -3,18 +3,28 @@
  <body>
      <div id="root"></div>
  </body>
- <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+ <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js" ></script>
  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+ <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+ <script></script>
  
- <script>
+ <script type="text/babel">
    const root = document.getElementById("root");
-   const h2 = React.createElement("h3" ,{ id : "title", onNouseEnter: ()=> console.log("으악 쥐다!"),},"hello i'm a title3");
+   const title = (
+    <h1 id="title" onMouseEnter={()=> console.log("으악 쥐다!")}>hello I'm a title</h1>
+    ); // 이게 바로 jsx입니다! 
+   const btn1 = (<button
+    style = {{backgroundColor:"pink",}}
+    onClick={() => console.log("don't click me")}
+    >click me.. but I don't want it.</button>)  
+    //--------------------------------------------------------------//
+   const h2 = React.createElement("h3" ,{ id : "title3", onMouseEnter: ()=> console.log("으악 쥐다!"),},"hello i'm a title3");
    const span = React.createElement("h1", {id:"hot-span", style:{ color: "pink"}, onMouseEnter: () => console.log("mouse enter")}, "hello I'm a span");
-   // 괄호안에 적는 것은 내가 만들고자 하는 html태그와 이름이 같아야한다.
+ 
    const btn = React.createElement("button", {onClick: () => console.log('im clicked')}, "Click me");
-   const container = React.createElement("div" , null, [span , btn]);
+   const container = React.createElement("div" , null, [title, span , btn , btn1]);
    ReactDOM.render( container, root );
-   //redder의 의미는 react의 element를 가지고 html에 배치한다는 의미
+   
 
  </script>
-</html>
+</html> 
