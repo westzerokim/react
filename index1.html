@@ -13,14 +13,25 @@
     
    
     function App() {
-      const [counter, modifier] = React.useState(0);
-      
+      const [counter, setCounter] = React.useState(0);
+      // 이 한줄만으로 리렌더링이 필요가 없어졌음다.
+      const onClick = () =>{
+        //counter을 업데이트하는데 modifier함수를 사용할꺼임.
+        //modifier함수는 값을 하나를 받는데 어떤 값을 부여하든 그 값으로 업데이트하고 리렌더링을 일으킬꺼임
+
+        setCounter(counter + 1);
+        
+        //여기서 ReactDOM.render(<App />, root); 이 함수를 호출해서 리렌더링을 해야하지만 
+        //파일이 많거나 폼,로그인,알림 등을 다룰 때 계속 호출하는건 힘들다
+        //그렇지만 이 하단에 컴포넌트를 리렌더링은 해줘야한다.
+
+      }
       return(
         <div>  
           <h1>
-            Totla clicks: 0
+            Totla clicks: {counter}
           </h1>
-          <button>
+          <button onClick={onClick}>
             click me.. but I don't want it.
           </button>
         </div>  
