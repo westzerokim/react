@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+    <div id = "root1"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script></script>
+
+  <script type="text/babel">
+    const root = document.getElementById("root");//바디를 잡아줘야 html요소를 넣을 수 있어요
+
+    function PlusCounter() {
+      const [ counter, setCounter ] =React.useState(0);
+      const plusClick = () =>{
+        setCounter(counter + 1);
+      };
+      
+      return(
+        <div>
+          <h1> only plus clicks : {counter}</h1>  
+          <button onClick={plusClick}>plus</button>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<PlusCounter />, root);
+    
+    //--------------------------------------------------------//
+    const root1 = document.getElementById("root1");//바디를 잡아줘야 html요소를 넣을 수 있어요
+
+    function MinusCounter(){
+      const [ counter1, setCounter1 ] =React.useState(0);
+      const minusClick = () =>{
+        setCounter1(counter1 - 1);
+      };
+
+      return(
+        <div>
+          <h1> only minus clicks : {counter1}</h1>  
+          <button onClick={minusClick}>minus</button>
+        </div>
+      );
+    }
+    
+   
+    ReactDOM.render(<MinusCounter />, root1);
+    
+
+  </script>
+</html>
