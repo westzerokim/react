@@ -3,6 +3,7 @@
   <body>
     <div id="root"></div>
     <div id = "root1"></div>
+    <div id = "root2"></div>
   </body>
   <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
@@ -47,7 +48,29 @@
     
    
     ReactDOM.render(<MinusCounter />, root1);
+    //--------------------------------------------------------//
+    // const root2 = document.getElementById("root2");
+
+    // function Timer(){
+    //   const [ timer, setTimer ] =React.useState(0);
+    //   const starTimer = () =>{
+    //      setTimer(toLocaleTimeString); 여기 문법틀림 나중에 해결하겠음 ㅠ
+    //   };
+
+    //   return(
+    //     <div>
+    //       <h1>Time is : {timer}</h1>  
+    //       <button onClick={starTimer}>star</button>
+    //     </div>
+    //   );
+    // }
     
+   
+    // ReactDOM.render(<Timer />, root2);
+    
+
+
+
 
   </script>
 </html>
