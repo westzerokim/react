@@ -14,18 +14,24 @@
    
     function App() {
       const [counter, setCounter] = React.useState(0);
-      // 이 한줄만으로 리렌더링이 필요가 없어졌음다.
+
       const onClick = () =>{
-        //counter을 업데이트하는데 modifier함수를 사용할꺼임.
-        //modifier함수는 값을 하나를 받는데 어떤 값을 부여하든 그 값으로 업데이트하고 리렌더링을 일으킬꺼임
+        //setCounter(counter + 1);
+        setCounter((current) => current + 1); //함수로 설정 가능함
+        //이 방법이 더 안전하다
+        //이 함수의 첫번째 argument는 현재의 값
+        //두번째 방법 
+        //이전값을 바탕으로 현재값을 설정하고싶다면 
 
-        setCounter(counter + 1);
-        
-        //여기서 ReactDOM.render(<App />, root); 이 함수를 호출해서 리렌더링을 해야하지만 
-        //파일이 많거나 폼,로그인,알림 등을 다룰 때 계속 호출하는건 힘들다
-        //그렇지만 이 하단에 컴포넌트를 리렌더링은 해줘야한다.
 
+        //그렇지만 이건 좋은 방법이 아니다 왜냐면 counter이 다른 곳에서 업데이트 될 수 있어서
+        //다른곳에서 변경되면 우리가 예상하는 값이 아닐 수 있음
+        //아무튼 이런 현상들이 흔치않고 자주 쓰이지않겠지만 state를 바꾸는 2가지 방법이 있어여.
+        //첫번째 방법은  setcouner그 자체의 값을 변환하는 것
+        //ex ) setCounter(56);
       }
+      //useState 를 이용해서 위에 보이는 state부분을 이용해 다음 state를 위한 계산을 해주고있다.
+      
       return(
         <div>  
           <h1>
@@ -35,9 +41,6 @@
             click me.. but I don't want it.
           </button>
         </div>  
-        //counter값을 증가시킬 때!! 렌더링을 하려고 한다
-        //렌더링을 한번만 하는게 목표!
-        //app에 데이터를 보관하고 자동으로 리렌더링을 자동으로 일으키는게 목표
       );
     }
      
