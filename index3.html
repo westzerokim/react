@@ -13,17 +13,39 @@
     
    
     function App() {
-    
-
-      
-    
-      
+      const[minsutes, setMinutes] =React.useState();
+      const onChange = (event) => {
+        setMinutes(event.target.value)
+      };  
       return(
-        <div>  
-          <h1>
-            Super Converter
-          </h1>
+        <div>   
+          <h1 className="hi">Super Converter</h1>
+          <label htmlFor="minutes">Minutes</label>
+          <input 
+            value={minsutes} 
+            id ="minutes" 
+            placeholder="Minutes" 
+            type="number"
+            onChange={onChange}
+            //여기 onchange에서 value
+          />
+          <h1>you want to convert {minsutes}</h1>
+          <label htmlFor="hours">Hours</label>  
+          <input id="hours" placeholder="Hours" type="number"/>
         </div>  
+        //input은 기본적으로 uncontrolled임 inputdml values를 우리가 통제할 수 없기때문!
+
+
+
+        //jsx에서는 이렇게 쓰면 안되용 html이랑 다르다
+        // <div>   
+        //   <h1>Super Converter</h1>
+        //   <label for="minutes">Minutes</label>
+        //   <input id ="minutes" placeholder="Minutes" type="number"/>
+        //   <label for="hours">Hours</label>  
+        //   <input id="hours" placeholder="Hours" type="number"/>
+        // </div>  에러가 뜨지않는 이유는 현재 상단에 script에서 production.min.js 이걸 사용하고있어서
+        // 저 부분을 제거하면 for을 for문으로 착각해서 오류남 for 과 class는 js에서 이미 선점하고 있는 단어임
       );
     }
      
