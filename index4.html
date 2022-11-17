@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script></script>
+
+  <script type="text/babel">
+    const root = document.getElementById("root");
+
+    function App() {
+      const [minsutes, setMinutes] = React.useState();
+      const onChange = (event) => {
+        setMinutes(event.target.value);
+        // react.useState로 값이 바로 업데이트 되게 되어있음
+      };
+      return (
+        <div>
+          <h1 className="hi">Super Converter</h1>
+          <div>
+            <label htmlFor="minutes">Minutes</label>
+            <input
+              value={minsutes} //input  데이터와 연결하기. 이렇게 연결하면 어디서든  input의 밸류를 조절할 수 있다.
+              //input의   value를 연결시켜주는 이유는 외부에서도 수정해주기위해서
+              id="minutes"
+              placeholder="Minutes"
+              type="number"
+              onChange={onChange}
+              //여기 onchange에서 value값을 스스로 업데이트할 수 있다.ㅠ
+            />
+          </div>
+          <label htmlFor="hours">Hours</label>
+          <input
+            value={minsutes}
+            id="hours"
+            placeholder="Hours"
+            type="number"
+          />
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
