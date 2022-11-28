@@ -10,36 +10,31 @@
 <script></script>
 
 <script type="text/babel">
-  const root = document.getElementById("root");
-
-  function App() {
+  
+  function MinutesToHours() {
     const [amount, setAmount] = React.useState();
     const [inverted, setInverted] = React.useState(false);
     const onChange = (event) => {
       setAmount(event.target.value);
-      // react.useState로 값이 바로 업데이트 되게 되어있음
-      //여기서 state를 업데이트해주기때문에 rerended이 되는 것이요.
     };
     const reset = () => setAmount(0)
     const onInvert = () => {
       reset();
       setInverted((current) => !current)};
-      // flipped의 값을 반대로 전환시키는 역할!
+   
     return (
       <div>
-        <h1 className="hi">Super Converter</h1>
+
         <div>
           <label htmlFor="minutes">Minutes</label>
           <input
-            value={ inverted ? amount * 60  : amount} //input  데이터와 연결하기. 이렇게 연결하면 어디서든  input의 밸류를 조절할 수 있다.
-            //input의   value를 연결시켜주는 이유는 외부에서도 수정해주기위해서
+            value={ inverted ? amount * 60  : amount} 
             id="minutes"
             placeholder="Minutes"
             type="number"
             onChange={onChange}
             disabled={inverted}
-          //더 간결하게는disabled={flipped}
-          //disabled={!flipped}
+      
           />
           <div>
             {" "} 
@@ -62,9 +57,27 @@
       </div>
     );
   }
+  function KmToMiles(){
+    return <h3>Km 2 M</h3>;
+  }
+  function App() {
+    const [index , setIndex] = React.useState(0)
+    // 이 state로 어떤 변환기를 보고싶은지 선택할꺼에용
+    return (
+      <div>
+        <h1 className="hi">Super Converter</h1>
+        <select>
+          <option value="0">Minutes & hours</option>  
+          <option value="1">Km & Miles</option> 
+        </select>
+      </div>
+    );
+  }
 
-  
+  const root = document.getElementById("root");
   ReactDOM.render(<App />, root);
+  //컴포넌트안에 컴포넌트 넣기 도전!
+  //여기서  APP 컴포넌트의 역할을 roo div를 그려주는 역할임
 </script>
 
 </html>
