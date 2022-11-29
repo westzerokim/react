@@ -63,15 +63,21 @@
   function App() {
     const [index , setIndex] = React.useState(0)
     // 이 state로 어떤 변환기를 보고싶은지 선택할꺼에용
+    const onSelect = (event) =>{
+      setIndex(event.target.value);
+    }
     return (
-      <div>
-        <h1 className="hi">Super Converter</h1>
-        <select>
+      <div> 
+        <h1 className="hi">Super Converter</h1>  
+        <select value={index} onChange={onSelect}>
           <option value="0">Minutes & hours</option>  
           <option value="1">Km & Miles</option> 
         </select>
+        <hr />
+        {index === "0" ? < MinutesToHours/> : null}
+        {index === "1" ? < KmToMiles/> : null}
       </div>
-    );
+    ); //이제 이 div 안에   event listner 를 추가했기때문에 우리는 jsx를 쓰고있다!
   }
 
   const root = document.getElementById("root");
