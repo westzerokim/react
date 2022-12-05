@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script></script>
+
+<script type="text/babel">
+  function Btn({ text, onClick }) {
+    console.log(text, "was rendered")
+    return (
+      
+        <button
+          onClick={onClick}
+          style={{
+            backgroundColor: "pink",
+            color: "white",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 10,
+          }}
+        //만약 여기에 onClick이 쓰인다면 이것은 바로 이벤트리스너임
+        >
+          {text}
+        </button>
+      
+    );
+  }
+  // 애네들을 함수형 컴포넌트라고 부르고 div안 내용을 jsx의 내부라고 부른다
+  function ConfirmBtn() {
+    return <button>confirm</button>;
+  }
+
+  function App() {
+    const [value, setValue] = React.useState("Save Change");
+    const onClick = () => setValue("Rever Changes");
+    return (
+      <div>
+        <Btn text={value} onClick={onClick} />
+        <Btn text="Continue" />
+      </div>
+      //여기서 들어가는 onclick은 eventlistner가 아니고  prop다
+      // 내 커스텀 컴포넌트에다가 넣으면 이거는 이벤트 리스너가 아니고 하나의 prop이다
+      // style은 결코 직접적으로  button에 달리지않기때문
+      //여기있는 text나 onclick은 버튼으로 들어가는 무언가가 아닌 btn컴포넌트로 들어가는 거임
+      //여기다 무엇을 넣던지 그것을 절대 html태그에 들어가지않고 그리고 props로만 기능한다.
+    );
+
+    // 오늘의 깨달음.. 컴포넌트 이름의 시작은 대문자로! calmel case!
+  }
+
+  const root = document.getElementById("root");
+  ReactDOM.render(<App />, root);
+    //컴포넌트안에 컴포넌트 넣기 도전!
+    //여기서  APP 컴포넌트의 역할을 roo div를 그려주는 역할임
+</script>
+
+</html>
