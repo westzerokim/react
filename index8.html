@@ -34,15 +34,18 @@
   function ConfirmBtn() {
     return <button>confirm</button>;
   }
-
+  const MemorizedBtn = React.memo(Btn);
   function App() {
     const [value, setValue] = React.useState("Save Change");
+    //여기에서 state가 바뀐다면 밑에 있는데 value의 prop도 변해야한다.
     const onClick = () => setValue("Rever Changes");
     return (
       <div>
-        <Btn text={value} onClick={onClick} />
-        <Btn text="Continue" />
+        <MemorizedBtn text={value} onClick={onClick} />
+        <MemorizedBtn text="Continue" />
       </div>
+      //우리는 porp가 변경되지 않는 선에서 continue를 리렌더할지 결정할 수 있다.
+
       //여기서 들어가는 onclick은 eventlistner가 아니고  prop다
       // 내 커스텀 컴포넌트에다가 넣으면 이거는 이벤트 리스너가 아니고 하나의 prop이다
       // style은 결코 직접적으로  button에 달리지않기때문
