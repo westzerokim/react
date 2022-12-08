@@ -198,18 +198,34 @@
     }
     function JulToKcal() {
       const [amount, setAmount] = React.useState();
-      return 
+      const onChange = (event) => {
+        setAmount(event.target.value);
+      };
+      return (
       <div>
         <h1 className="hi">EASY Converter</h1>
          <label htmlFor="jul">Jul</label>
          <input 
-          value = {amount}
+          value={amount}
           id="jul"
           placeholder = "Jul"
+          type ="number"
+          onChange={onChange}
+          />
 
-         >
+         <div>
+          
+          <label htmlFor="Kcal">Kcal</label>
+          <input
+           value={amount/4184}
+           id ="Kcal"
+           placeholder = "Kcal"
+           type = "number"
+          />
+          </div>
 
-      </div>;
+      </div>
+      );
     }
     function App() {
       //부모컴포넌트
@@ -226,7 +242,7 @@
             <option value="2">MinusCounter</option>
             <option value="3">MinutesToHours</option>
             <option value="4">km to Miles</option>
-            <option value="5">km to Miles</option>
+            <option value="5">JulToKcal</option>
           </select>
           <hr />
           {index === "0" ? "please select yout units" : null}
@@ -234,7 +250,7 @@
           {index === "2" ? <MinusCounter /> : null}
           {index === "3" ? <MinutesToHours /> : null}
           {index === "4" ? <KmtoMiles /> : null}
-          {index === "5" ? <App3 /> : null}
+          {index === "5" ? <JulToKcal /> : null}
         </div>
       );
     }
