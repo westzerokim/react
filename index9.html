@@ -11,8 +11,8 @@
   <script></script>
 
   <script type="text/babel">
-    function Btn({ text, fontSize }) {
-   
+    function Btn({ text, fontSize = 50}) {
+      //여기서 값을 이렇게 주면 정의되지 않은 변수에 관한 기본값을 자동으로 주게된다!
       return (
         <button
           
@@ -31,16 +31,16 @@
       );
     }
     Btn.propTypes = {
-      text: PropTypes.string,
-      fontSize: PropTypes.number,
+      text: PropTypes.string.isRequired,
+      fontSize: PropTypes.isRequired,
     };
-    
+    //isRequired을 사용하면 필수표시가 되어있지만 값이 빈 props를 찾아준다
     function App() {
       
       return (
         <div>
           <Btn text="Confirm" fontSize={18} />
-          <Btn text={14} fontSize={"continue"} />
+          <Btn text="continue"  />
         </div>
       );
         // 이 코드자체는 유효해서 ui에 문제없이 출력된다
