@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+  <!-- prop타입을 가져왔다! 위에게 그거임 react는 이것을 알려주기전까지는 prop의 타입을 몰라요 -->
+  <script></script>
+
+  <script type="text/babel">
+    function Btn({ text, fontSize }) {
+   
+      return (
+        <button
+          
+          style={{
+            backgroundColor: "pink",
+            color: "white",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 10,
+            fontSize,
+          }}
+          
+        >
+          {text}
+        </button>
+      );
+    }
+    Btn.propTypes = {
+      text: PropTypes.string,
+      fontSize: PropTypes.number,
+    };
+    
+    function App() {
+      
+      return (
+        <div>
+          <Btn text="Confirm" fontSize={18} />
+          <Btn text={14} fontSize={"continue"} />
+        </div>
+      );
+        // 이 코드자체는 유효해서 ui에 문제없이 출력된다
+      
+    }
+
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+
+
+  </script>
+</html>
